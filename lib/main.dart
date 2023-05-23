@@ -1,24 +1,45 @@
+import 'dart:async';
+import 'dart:io';
+
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+import 'injection.dart' as di;
+import 'router/router.dart';
+import 'theme.dart';
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
+void main() async {
+  runZonedGuarded<Future<void>>(() async {
+    HttpOverrides.global = MyHttpOverrides();
+    WidgetsFlutterBinding.ensureInitialized();
+
+    await di.init();
+
+    runApp(const MyApp());
+  },
+      (error, stack) =>
+          {FirebaseCrashlytics.instance.recordError(error, stack)});
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'App Empresas Banco Estado',
+    return MaterialApp.router(
+      routerConfig: di.sl<ApplicationRouter>().getApplicationRouter(),
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Scaffold(
-        body: Center(
-          child: Text('HomePage'),
-        ),
-      ),
+      theme: AppTheme.lightTheme,
     );
   }
 }
