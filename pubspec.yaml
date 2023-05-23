@@ -17,3 +17,36 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icons/main-app-icon.png
+    - assets/backgrounds/bg-gris-full.png
+    - assets/splash/launch-logo.png
+    - assets/splash/app-empresas-splash.png
+    - assets/splash/background.png
+    - assets/splash/logo.png
+    - assets/enrollment/enrollment-tutorial-0.svg
+    - assets/enrollment/enrollment-tutorial-0.png
+    - assets/enrollment/enrollment-tutorial-1.svg
+    - assets/enrollment/enrollment-tutorial-2.svg
+    - assets/logos/logo_be_white_min.svg
+    - assets/headers/header-enrolamiento.png
+    - assets/icons/lock-icon.svg
+    - assets/icons/success-icon.svg
+    - .env
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: fonts/nunito_sans/NunitoSans-Black.ttf
+        - asset: fonts/nunito_sans/NunitoSans-BlackItalic.ttf
+        - asset: fonts/nunito_sans/NunitoSans-Bold.ttf
+        - asset: fonts/nunito_sans/NunitoSans-BoldItalic.ttf
+        - asset: fonts/nunito_sans/NunitoSans-ExtraBold.ttf
+        - asset: fonts/nunito_sans/NunitoSans-ExtraBoldItalic.ttf
+        - asset: fonts/nunito_sans/NunitoSans-ExtraLight.ttf
+        - asset: fonts/nunito_sans/NunitoSans-ExtraLightItalic.ttf
+        - asset: fonts/nunito_sans/NunitoSans-Italic.ttf
+        - asset: fonts/nunito_sans/NunitoSans-Light.ttf
+        - asset: fonts/nunito_sans/NunitoSans-LightItalic.ttf
+        - asset: fonts/nunito_sans/NunitoSans-Regular.ttf
+        - asset: fonts/nunito_sans/NunitoSans-SemiBold.ttf
+        - asset: fonts/nunito_sans/NunitoSans-SemiBoldItalic.ttf
