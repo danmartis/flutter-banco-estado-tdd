@@ -25,9 +25,7 @@ void main() async {
     await di.init();
 
     runApp(const MyApp());
-  },
-      (error, stack) =>
-          {FirebaseCrashlytics.instance.recordError(error, stack)});
+  }, (error, stack) => FirebaseCrashlytics.instance.recordError(error, stack));
 }
 
 class MyApp extends StatelessWidget {

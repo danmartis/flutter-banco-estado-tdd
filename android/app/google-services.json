@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "938193404358",
+    "project_id": "app-empresas-f603c",
+    "storage_bucket": "app-empresas-f603c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938193404358:android:02c4ad7d63b4a914af72c7",
+        "android_client_info": {
+          "package_name": "cl.bancoestado.empresas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938193404358-o38m5ek8qgjcirva4kiivrsvmjeeshh3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpWGiSkt6n-_5W5ie-RoEvLncrLjuTMHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938193404358-o38m5ek8qgjcirva4kiivrsvmjeeshh3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
