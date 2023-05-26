@@ -29,6 +29,13 @@
             {
               "client_id": "938193404358-o38m5ek8qgjcirva4kiivrsvmjeeshh3.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "938193404358-5c0nfei2g4ngv6g2duv8q7bn2e25vs0l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "cl.bancoestado.empresas.RunnerTests"
+              }
             }
           ]
         }

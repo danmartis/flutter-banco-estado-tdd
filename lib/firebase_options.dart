@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,21 +43,41 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyB9OhVlNdcFwG2p8FgA8ge5pTykRIoGkt8',
+    appId: '1:938193404358:web:66e9a3d1484d2805af72c7',
+    messagingSenderId: '938193404358',
+    projectId: 'app-empresas-f603c',
+    authDomain: 'app-empresas-f603c.firebaseapp.com',
+    storageBucket: 'app-empresas-f603c.appspot.com',
+    measurementId: 'G-1JF87XTN3V',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCdeskGJN1797Pv2andJNYP4jVLT0IDWEo',
-    appId: '1:470192218334:android:f51932e5eb5e3453e4e24f',
-    messagingSenderId: '470192218334',
-    projectId: 'beche-app-flutter',
-    storageBucket: 'beche-app-flutter.appspot.com',
+    apiKey: 'AIzaSyCpWGiSkt6n-_5W5ie-RoEvLncrLjuTMHw',
+    appId: '1:938193404358:android:02c4ad7d63b4a914af72c7',
+    messagingSenderId: '938193404358',
+    projectId: 'app-empresas-f603c',
+    storageBucket: 'app-empresas-f603c.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAaKeVoVsE08rWZVnkb6xYUvcD2Op19TR4',
-    appId: '1:470192218334:ios:e77cf7d05b550a5be4e24f',
-    messagingSenderId: '470192218334',
-    projectId: 'beche-app-flutter',
-    storageBucket: 'beche-app-flutter.appspot.com',
-    iosClientId: '470192218334-4h0tg2m73uagn3lqv438gvu46pmg5enf.apps.googleusercontent.com',
-    iosBundleId: 'com.example.appBechePoc',
+    apiKey: 'AIzaSyDr11Nu6Ak-4JZhHdg9sxQ_3RvrGJcSG-A',
+    appId: '1:938193404358:ios:07085168a0dc563baf72c7',
+    messagingSenderId: '938193404358',
+    projectId: 'app-empresas-f603c',
+    storageBucket: 'app-empresas-f603c.appspot.com',
+    iosClientId: '938193404358-sl8cravh0fc86egjc7gb1f0r1rch6oo1.apps.googleusercontent.com',
+    iosBundleId: 'cl.bancoestado.empresas',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDr11Nu6Ak-4JZhHdg9sxQ_3RvrGJcSG-A',
+    appId: '1:938193404358:ios:1028a57c960612e3af72c7',
+    messagingSenderId: '938193404358',
+    projectId: 'app-empresas-f603c',
+    storageBucket: 'app-empresas-f603c.appspot.com',
+    iosClientId: '938193404358-5c0nfei2g4ngv6g2duv8q7bn2e25vs0l.apps.googleusercontent.com',
+    iosBundleId: 'cl.bancoestado.empresas.RunnerTests',
   );
 }
