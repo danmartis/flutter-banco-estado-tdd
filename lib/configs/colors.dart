@@ -19,6 +19,16 @@ class AppColors {
   static const Color greyBackground =
       Color.fromRGBO(246, 248, 249, 1); // #F6F8F9
 
+  // AlertCards
+  static const Color colorInfo100 = Color.fromRGBO(0, 174, 255, 1); 
+  static const Color colorInfo10 = Color.fromRGBO(0, 174, 255, 0.1); 
+  static const Color colorWarn100 = Color.fromRGBO(242, 182, 2, 1); 
+  static const Color colorWarn10 = Color.fromRGBO(242, 182, 2, 0.1); 
+  static const Color colorSuccess100 = Color.fromRGBO(6, 196, 123, 1); 
+  static const Color colorSuccess10 = Color.fromRGBO(6, 196, 123, 0.1); 
+  static const Color colorWrong100 = Color.fromRGBO(214, 64, 64, 1); 
+  static const Color colorWrong10 = Color.fromRGBO(214, 64, 64, 0.1); 
+
   // Brands
   static const Color microsoftAzure = Color.fromRGBO(0, 127, 255, 1); //#007FFF
 
@@ -26,4 +36,7 @@ class AppColors {
   static const Color inputBackground = Color.fromRGBO(243, 243, 243, 1);
 
   static const Color borderShadow = Color.fromRGBO(44, 61, 70, 0.12);
+
+  // Fonts
+  static const Color fontColor = Color.fromRGBO(44, 48, 56, 1);
 }

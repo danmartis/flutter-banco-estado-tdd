@@ -5,14 +5,15 @@ import 'configs/colors.dart';
 class AppTheme {
   final BuildContext context;
 
-  static const String fontFamily = 'Poppins';
-  static const Color textColor = AppColors.grey100;
+  static const String fontFamily = 'nunito';
+  static const Color textColor = AppColors.fontColor;
 
   AppTheme({
     required this.context,
   });
 
   static final lightTheme = ThemeData(
+    primaryColor: AppColors.orange100,
     scaffoldBackgroundColor: AppColors.scaffoldBackground,
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.orange100,
