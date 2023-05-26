@@ -48,7 +48,8 @@ android {
 
     defaultConfig {
         applicationId "cl.bancoestado.empresas"
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 19
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
@@ -69,4 +70,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation project(":Entrust")
+    implementation project(":RootBeer")
+    implementation 'com.android.support:multidex:1.0.3'
 }
