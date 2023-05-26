@@ -2,7 +2,7 @@
 
 import 'package:empresas/core/error/exceptions.dart';
 import 'package:empresas/features/auth_tef/0_data/datasources/http_datasource.dart';
-import 'package:empresas/features/auth_tef/0_data/model/phase_one_model.dart';
+import 'package:empresas/features/auth_tef/0_data/models/phase_one_model.dart';
 import 'package:empresas/features/auth_tef/1_domain/entities/phase_one.dart';
 import 'package:empresas/core/error/failure.dart';
 import 'package:empresas/features/auth_tef/1_domain/repositories/phase_one_repository.dart';
