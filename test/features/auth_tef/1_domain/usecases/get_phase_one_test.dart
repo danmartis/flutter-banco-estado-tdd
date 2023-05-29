@@ -2,7 +2,7 @@
 
 import 'package:empresas/features/auth_tef/1_domain/entities/entities.dart';
 import 'package:empresas/features/auth_tef/1_domain/repositories/phase_one_repository.dart';
-import 'package:empresas/features/auth_tef/1_domain/usecases/get_acount_states.dart';
+import 'package:empresas/features/auth_tef/1_domain/usecases/get_phase_one.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

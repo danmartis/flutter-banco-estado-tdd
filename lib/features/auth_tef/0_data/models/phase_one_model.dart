@@ -10,11 +10,11 @@ class PhaseOneModel extends PhaseOne {
 
   factory PhaseOneModel.fromJson(Map<String, dynamic> json) {
     return PhaseOneModel(
-      accountStates: (json['estados'] as List<Map<String, dynamic>>).map((state) => AccountStateModel.fromJson(state).toEntity()).toList(),
+      accountStates: (json['estados'] as List<dynamic>).map((state) => AccountStateModel.fromJson(state).toEntity()).toList(),
       maxTefAmount: json['maximoTransferencia'],
       maxTefAmountPerDay: json['montoMaximoPorDia'],
       maxTefSelection: json['seleccionMaximaTransferencias'],
-      accounts: (json['cuentas'] as List<Map<String, dynamic>>).map((account) => AccountModel.fromJson(account).toEntity()).toList()
+      accounts: (json['cuentas'] as List<dynamic>).map((account) => AccountModel.fromJson(account).toEntity()).toList()
     );
   }
 

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:empresas/configs/fonts.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,7 @@ void main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     await di.init();
+    await loadFonts();
 
     runApp(const MyApp());
   }, (error, stack) => FirebaseCrashlytics.instance.recordError(error, stack));
