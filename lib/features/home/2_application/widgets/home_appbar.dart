@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppbar({
@@ -16,7 +17,20 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       actions: actions,
-      title: Text(title),
+      flexibleSpace: Column(
+        children: [
+          Expanded(child: Container()),
+          Row(
+            children: [
+              SizedBox(
+                height: 50,
+                child: SvgPicture.asset('assets/logos/logo_be_empresas.svg'),
+              ),
+              Expanded(child: Container()),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
