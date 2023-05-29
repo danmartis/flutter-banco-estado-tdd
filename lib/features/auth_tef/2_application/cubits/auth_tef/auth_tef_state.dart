@@ -4,22 +4,26 @@ class AuthTefState extends Equatable {
 
   final PhaseOne phaseOne;
   final bool isLoading;
+  final bool hasPhaseOneError;
 
   const AuthTefState({
     required this.phaseOne,
-    required this.isLoading
+    required this.isLoading,
+    required this.hasPhaseOneError
   });
 
   AuthTefState copyWith({
     PhaseOne? phaseOne,
-    bool? isLoading
+    bool? isLoading,
+    bool? hasPhaseOneError
   }) {
     return AuthTefState(
       phaseOne: phaseOne ?? this.phaseOne,
-      isLoading: isLoading ?? this.isLoading
+      isLoading: isLoading ?? this.isLoading,
+      hasPhaseOneError: hasPhaseOneError ?? this.hasPhaseOneError
     );
   }
 
   @override
-  List<Object?> get props => [phaseOne, isLoading];
+  List<Object?> get props => [phaseOne, isLoading, hasPhaseOneError];
 }

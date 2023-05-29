@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:empresas/core/util/string_util.dart';
 import 'package:empresas/features/auth_tef/1_domain/entities/entities.dart';
 import 'package:empresas/features/auth_tef/2_application/cubits/auth_tef/auth_tef_cubit.dart';
 import 'package:empresas/features/auth_tef/2_application/widgets/shared/alert_card.dart';
@@ -23,8 +24,7 @@ class _SelectStatusAccountView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthTefState authTefState = context.watch<AuthTefCubit>().state;
-    context.read<AuthTefCubit>().init();
+    context.read<AuthTefCubit>().getPhaseOneData();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(title: 'Autorizar transferencias'),
@@ -55,43 +55,72 @@ class _SelectStatusAccountView extends StatelessWidget {
               const SizedBox(
                 height: 48,
               ),
-              authTefState.isLoading ? 
-                const AccountStatesSkeleton() : 
-                FadeIn(child: _AccountStateButtons(accountStates: authTefState.phaseOne.accountStates,))     
+              BlocBuilder<AuthTefCubit, AuthTefState>(
+                builder: (context, authTefState) {
+                  return showResult(context, authTefState);
+                },
+              )
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget showResult(BuildContext context, AuthTefState authTefState) {
+    if (authTefState.isLoading) {
+      return const AccountStatesSkeleton();
+    }
+    if (authTefState.hasPhaseOneError) {
+      // TODO: Retornar widget de error por defecto que está por definir
+      return Column(
+        children: [
+          const Text('Error inesperado'),
+          TextButton(
+            onPressed: () => context.read<AuthTefCubit>().getPhaseOneData(),
+            child: const Text('Reintentar')
+          )
+        ],
+      );
+    }
+
+    return FadeIn(
+      child: AccountStateButtons(
+        accountStates: authTefState.phaseOne.accountStates,
+        maxTefAmountPerDay: authTefState.phaseOne.maxTefAmountPerDay
+      )
+    );
+  }
 }
 
-class _AccountStateButtons extends StatelessWidget {
+class AccountStateButtons extends StatelessWidget {
   final List<AccountState> accountStates;
+  final int maxTefAmountPerDay;
 
-  const _AccountStateButtons({
-    required this.accountStates
-  });
+  const AccountStateButtons(
+      {super.key,
+      required this.accountStates,
+      required this.maxTefAmountPerDay});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ...accountStates.map((accountState) => CustomCardButton(
-          cardTitle: accountState.description,
-          onTap: () {},
-        )),
+              cardTitle: accountState.description,
+              onTap: () {},
+            )),
         const SizedBox(
           height: 32,
         ),
-        const AlertCard(
-          mainText: 'El límite de monto máximo diario para transferencias a terceros es ', 
+        AlertCard(
+          mainText:
+              'El límite de monto máximo diario para transferencias a terceros es ',
           alertCardType: AlertCardType.info,
           childrenText: [
             TextSpan(
-              text: '\$14.999.999',
-              style: TextStyle(fontWeight: FontWeight.bold)
-            )
+                text: '\$${formatPriceCLP(maxTefAmountPerDay)}',
+                style: const TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
         const SizedBox(
@@ -101,10 +130,6 @@ class _AccountStateButtons extends StatelessWidget {
     );
   }
 }
-
-
-
-
 
 class _ImageTef extends StatelessWidget {
   const _ImageTef();

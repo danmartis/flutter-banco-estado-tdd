@@ -122,7 +122,7 @@ Future<void> init() async {
   sl.registerFactory(() => dio);
 
   // AuthTef Injections
-  AuthTefFeature.authTefInjections(sl);
+  AuthTefFeature.injections(sl);
 
   sl.registerFactory<BeneficiariesRemoteDataSource>(
       () => BeneficiariesRemoteDataSourceImpl(dio: sl(), performance: sl()));

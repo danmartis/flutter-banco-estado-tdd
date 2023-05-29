@@ -10,14 +10,18 @@ void main() {
     accountStates: [
       AccountState(
         description: "Sin Autorización", 
-        id: "1raFirma"
-      )
+        id: "1eraFirma"
+      ),
+      AccountState(
+        description: "Pendiente Otra Autorización", 
+        id: "2daFirma"
+      ),
     ],
     accounts: [
       Account(
-        accountNumber: "1234",
+        accountNumber: "00001028821",
         accountType: "CCT",
-        alias: "test alias"
+        alias: "Alias cuenta"
       )
     ],
     maxTefAmount: 5000000,

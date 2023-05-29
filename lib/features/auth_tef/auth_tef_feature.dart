@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:empresas/features/auth_tef/0_data/datasources/http_datasource.dart';
 import 'package:empresas/features/auth_tef/0_data/repositories/phase_one_repository_impl.dart';
 import 'package:empresas/features/auth_tef/1_domain/repositories/phase_one_repository.dart';
@@ -13,17 +12,27 @@ import 'package:go_router/go_router.dart';
 
 class AuthTefFeature {
   static GoRoute router = GoRoute(
-    path: '/select_status_account',
-    builder: (BuildContext context, GoRouterState state) {
-      return BlocProvider(
-        create: (context) => AuthTefCubit(),
-        child: const SelectStatusAccountPage(),
-      );
-    },
-    routes: const [],
+    name: 'auth_tef',
+    path: '/auth_tef',
+    builder: (context, state) => BlocProvider(
+      create: (context) => AuthTefCubit(),
+      child: const SelectStatusAccountPage(),
+    ),
+    routes: [
+      GoRoute(
+        name: 'select_status_account',
+        path: 'select_status_account',
+        builder: (BuildContext context, GoRouterState state) {
+          return BlocProvider(
+            create: (context) => AuthTefCubit(),
+            child: const SelectStatusAccountPage(),
+          );
+        },
+      )
+    ],
   );
 
-  static void authTefInjections(GetIt sl) {
+  static void injections(GetIt sl) {
 
     final url = '${dotenv.env['API_BASE_URL']!}/bff/v1/tef-pj-bff-app-v2/autorizar/fase1';
 
