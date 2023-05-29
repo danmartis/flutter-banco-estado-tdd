@@ -15,25 +15,34 @@ class AuthTefCubit extends Cubit<AuthTefState> {
       maxTefAmountPerDay: 0,
       maxTefSelection: 0
     ),
-    isLoading: true
+    isLoading: true,
+    hasPhaseOneError: false
   ));
 
   final GetPhaseOne _getPhaseOne = sl<GetPhaseOne>();
 
-  void init() async {
+  Future<void> getPhaseOneData() async {
+    emit(state.copyWith(
+      isLoading: true,
+      hasPhaseOneError: false
+    ));
+
     final phaseOneResult = await _getPhaseOne();
 
     phaseOneResult.fold(
       (failure) {
         emit(state.copyWith(
-          isLoading: false
+          isLoading: false,
+          hasPhaseOneError: true
         ));
+        return;
       }, 
       (PhaseOne phaseOne) {
         emit(state.copyWith(
           isLoading: false,
           phaseOne: phaseOne
         ));
+        return;
       }
     );
   }

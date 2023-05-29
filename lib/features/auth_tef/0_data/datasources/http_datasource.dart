@@ -14,13 +14,17 @@ class HttpDatasourceImpl implements HttpDatasource {
 
   @override
   Future<Map<String, dynamic>> get(String url, {Options? options}) async {
-    final response = await httpClient.get(url, options: options);
-
-    if(response.statusCode == 200) {
-      return response.data;
-    } else {
+    try {
+      final response = await httpClient.get(url, options: options);
+      if(response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw ServerException();
+      }
+    } catch(e) {
       throw ServerException();
     }
+
   }
 
 }

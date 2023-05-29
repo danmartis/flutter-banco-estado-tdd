@@ -13,7 +13,7 @@ class ApplicationRouter {
 
   GoRouter getApplicationRouter() {
     return GoRouter(
-      initialLocation: '/select_status_account',
+      initialLocation: '/auth_tef',
       observers: [
         FirebaseAnalyticsObserver(analytics: analytics),
       ],
