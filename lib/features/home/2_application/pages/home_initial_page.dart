@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/balances_summary_cards/balances_summary_list.dart';
-import '../widgets/home_appbar.dart';
 import '../widgets/shorcuts/shortcuts_list.dart';
 
 class HomeInitialPage extends StatelessWidget {
@@ -13,7 +12,6 @@ class HomeInitialPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: const HomeAppbar(title: "Home"),
       body: Container(
         color: Colors.transparent,
         child: const Column(

@@ -2,21 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppbar({
-    required this.title,
-    this.actions,
-    Key? key,
-  }) : super(key: key);
-
-  final String title;
-  final List<Widget>? actions;
+  const HomeAppbar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      actions: actions,
       flexibleSpace: Column(
         children: [
           Expanded(child: Container()),

@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '2_application/bloc/bottom_nav_bar_cubit/bottom_nav_bar_cubit.dart';
 import '2_application/pages/home_initial_page.dart';
+import '2_application/widgets/drawer/drawer_menu.dart';
+import '2_application/widgets/home_appbar.dart';
 import '2_application/widgets/home_background.dart';
 import '2_application/widgets/home_bottom_nav_bar.dart';
 
@@ -17,6 +19,10 @@ class HomeIndex extends StatelessWidget {
         BlocBuilder<BottomNavBarCubit, BottomNavBarState>(
           builder: (context, state) => Scaffold(
             backgroundColor: Colors.transparent,
+            appBar: state.index == 0
+                ? const HomeAppbar()
+                : AppBar(title: Text(state.name)),
+            endDrawer: const DrawerMenu(),
             body: getHomeElement(state.index),
             bottomNavigationBar: const HomeBottomNavigationBar(),
           ),
@@ -39,8 +45,8 @@ class HomeSupportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Soporte")),
-    );
+        // appBar: AppBar(title: Text("Soporte")),
+        );
   }
 }
 
@@ -51,7 +57,7 @@ class HomeEmergencyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Emergencias")),
-    );
+        // appBar: AppBar(title: Text("Emergencias")),
+        );
   }
 }
