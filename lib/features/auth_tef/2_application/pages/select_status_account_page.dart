@@ -1,11 +1,13 @@
-import 'package:empresas/configs/colors.dart';
-import 'package:empresas/features/auth_tef/2_application/widgets/alert_card.dart';
-import 'package:empresas/features/auth_tef/2_application/widgets/custom_app_bar.dart';
-import 'package:empresas/features/auth_tef/2_application/widgets/custom_card_button.dart';
-import 'package:empresas/theme.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:empresas/features/auth_tef/1_domain/entities/entities.dart';
+import 'package:empresas/features/auth_tef/2_application/cubits/auth_tef/auth_tef_cubit.dart';
+import 'package:empresas/features/auth_tef/2_application/widgets/shared/alert_card.dart';
+import 'package:empresas/features/auth_tef/2_application/widgets/shared/custom_app_bar.dart';
+import 'package:empresas/features/auth_tef/2_application/widgets/shared/custom_card_button.dart';
+import 'package:empresas/features/auth_tef/2_application/widgets/skeletons/account_states_skeleton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 class SelectStatusAccountPage extends StatelessWidget {
   const SelectStatusAccountPage({super.key});
@@ -21,6 +23,8 @@ class _SelectStatusAccountView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthTefState authTefState = context.watch<AuthTefCubit>().state;
+    context.read<AuthTefCubit>().init();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(title: 'Autorizar transferencias'),
@@ -51,32 +55,9 @@ class _SelectStatusAccountView extends StatelessWidget {
               const SizedBox(
                 height: 48,
               ),
-              CustomCardButton(
-                cardTitle: 'Sin autorización',
-                onTap: () {
-                  
-                },
-              ),
-              CustomCardButton(
-                cardTitle: 'Pendientes de otra autorización',
-                onTap: () {},
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              const AlertCard(
-                mainText: 'El límite de monto máximo diario para transferencias a terceros es ', 
-                alertCardType: AlertCardType.info,
-                childrenText: [
-                  TextSpan(
-                    text: '\$14.999.999',
-                    style: TextStyle(fontWeight: FontWeight.bold)
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 32,
-              ),
+              authTefState.isLoading ? 
+                const AccountStatesSkeleton() : 
+                FadeIn(child: _AccountStateButtons(accountStates: authTefState.phaseOne.accountStates,))     
             ],
           ),
         ),
@@ -85,43 +66,48 @@ class _SelectStatusAccountView extends StatelessWidget {
   }
 }
 
+class _AccountStateButtons extends StatelessWidget {
+  final List<AccountState> accountStates;
 
-
-class _ImageTef extends StatefulWidget {
-  const _ImageTef();
+  const _AccountStateButtons({
+    required this.accountStates
+  });
 
   @override
-  State<_ImageTef> createState() => _ImageTefState();
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ...accountStates.map((accountState) => CustomCardButton(
+          cardTitle: accountState.description,
+          onTap: () {},
+        )),
+        const SizedBox(
+          height: 32,
+        ),
+        const AlertCard(
+          mainText: 'El límite de monto máximo diario para transferencias a terceros es ', 
+          alertCardType: AlertCardType.info,
+          childrenText: [
+            TextSpan(
+              text: '\$14.999.999',
+              style: TextStyle(fontWeight: FontWeight.bold)
+            )
+          ],
+        ),
+        const SizedBox(
+          height: 32,
+        ),
+      ],
+    );
+  }
 }
 
-class _ImageTefState extends State<_ImageTef>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
 
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(seconds: 3),
-      vsync: this,
-    );
-    // _startRotation();
-  }
 
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
 
-  void _startRotation() async {
-    while (true) {
-      // await Future.delayed(Duration(seconds: 2));
-      await _animationController.animateBack(0,
-          duration: const Duration(seconds: 3));
-      await _animationController.forward();
-    }
-  }
+
+class _ImageTef extends StatelessWidget {
+  const _ImageTef();
 
   @override
   Widget build(BuildContext context) {
@@ -136,18 +122,14 @@ class _ImageTefState extends State<_ImageTef>
             height: 82,
           )),
         ),
-        RotationTransition(
-          turns: Tween(begin: 0.0, end: 0.5).animate(CurvedAnimation(
-              parent: _animationController, curve: Curves.elasticInOut)),
-          child: SizedBox(
-            height: 82,
-            child: Center(
-                child: SvgPicture.asset(
-              'assets/images/auth_tef/icon_tef_img.svg',
-              width: 56,
-              height: 56,
-            )),
-          ),
+        SizedBox(
+          height: 82,
+          child: Center(
+              child: SvgPicture.asset(
+            'assets/images/auth_tef/icon_tef_img.svg',
+            width: 56,
+            height: 56,
+          )),
         )
       ],
     );
