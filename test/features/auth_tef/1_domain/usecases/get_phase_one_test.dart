@@ -24,7 +24,9 @@ void main() {
       Account(
         accountNumber: "00001028821", 
         alias: "Alias cuenta", 
-        accountType: "CCT"
+        accountType: "CCT",
+        description: "Cuenta Corriente",
+        stateId: "1eraFirma"
       )
     ], 
     maxTefAmount: 5000000, 

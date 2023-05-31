@@ -34,7 +34,9 @@ void main() {
       Account(
         accountNumber: "00001028821",
         accountType: "CCT",
-        alias: "Alias cuenta"
+        alias: "Alias cuenta",
+        description: "Cuenta Corriente",
+        stateId: "1eraFirma"
       )
     ],
     maxTefAmount: 5000000,
@@ -51,7 +53,9 @@ void main() {
             {
                 "numeroCuenta": "00001028821",
                 "alias": "Alias cuenta",
-                "tipoCuenta": "CCT"
+                "tipoCuenta": "CCT",
+                "desc": "Cuenta Corriente",
+                "estado": "1eraFirma"
             }
         ],
         "maximoTransferencia": 5000000,

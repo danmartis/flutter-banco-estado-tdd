@@ -1,5 +1,6 @@
-import 'package:empresas/features/auth_tef/auth_tef_feature.dart';
+import 'package:empresas/features/auth_tef/2_application/pages/shared/error_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/features.dart';
@@ -13,7 +14,7 @@ class ApplicationRouter {
 
   GoRouter getApplicationRouter() {
     return GoRouter(
-      initialLocation: '/auth_tef',
+      initialLocation: '/home',
       observers: [
         FirebaseAnalyticsObserver(analytics: analytics),
       ],
@@ -22,7 +23,19 @@ class ApplicationRouter {
         BeneficiariesFeature.router,
         HomeFeature.router,
         TransfersFeature.router,
-        AuthTefFeature.router
+        AuthTefFeature.router,
+        GoRoute(
+          name: 'error_page',
+          path: '/error_page',
+          builder: (BuildContext context, GoRouterState state) {
+            final data = state.extra as Map<String, dynamic>;
+            return ErrorPage(
+              titlePage: data['titlePage'],
+              titleError: data['titleError'],
+              subtitleError: data['subtitleError'],
+            );
+          },
+        )
       ],
     );
   }

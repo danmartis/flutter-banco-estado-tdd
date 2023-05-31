@@ -45,7 +45,13 @@ void main() {
           AccountState(id: '2daFirma', description: 'Pendiente Otra Autorización'),
         ],
         accounts: [
-          Account(accountNumber: "00001028821", alias: "alias cuenta", accountType: "CCT")
+          Account(
+            accountNumber: "00001028821", 
+            alias: "alias cuenta", 
+            accountType: "CCT",
+            description: "Cuenta Corriente",
+            stateId: "1eraFirma"
+          )
         ],
         maxTefAmount: 1000,
         maxTefAmountPerDay: 500,
@@ -81,7 +87,7 @@ void main() {
           maxTefSelection: 0,
         ),
         isLoading: false,
-        hasPhaseOneError: false
+        hasPhaseOneError: true
       );
 
       await authTefCubit.getPhaseOneData();
