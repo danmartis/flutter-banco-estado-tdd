@@ -53,3 +53,7 @@ pubspec.lock
 ios/Podfile.lock
 .env
 windows/
+
+#FVM
+flutter_sdk
+fvm_config.json
