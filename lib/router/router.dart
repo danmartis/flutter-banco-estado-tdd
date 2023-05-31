@@ -1,3 +1,4 @@
+import 'package:empresas/features/balances/2_application/balances_feature.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,9 +19,10 @@ class ApplicationRouter {
       ],
       routes: [
         AuthFeature.router,
+        BalancesFeature.router,
         BeneficiariesFeature.router,
         HomeFeature.router,
-        TransfersFeature.router
+        TransfersFeature.router,
       ],
     );
   }
