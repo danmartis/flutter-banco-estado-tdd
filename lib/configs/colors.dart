@@ -18,6 +18,7 @@ class AppColors {
   static const Color grey10 = Color.fromRGBO(231, 237, 240, 1); // #E7EDF0
   static const Color greyBackground =
       Color.fromRGBO(246, 248, 249, 1); // #F6F8F9
+  static const Color accentColor = Color.fromRGBO(62, 80, 180, 1);
 
   // AlertCards
   static const Color colorInfo100 = Color.fromRGBO(0, 174, 255, 1); 

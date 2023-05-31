@@ -28,7 +28,10 @@ dependencies:
   go_router: ^7.1.1
   mocktail: ^0.3.0
   skeletons: ^0.0.3
-
+  arandano_flutter:
+    git:
+      url: https://castorg3:RSY3xo4ifshDfcjmbxVa@gitlab.banco.bestado.cl/BECHE/apps/arandano-flutter.git
+      ref: v0.0.3
 dev_dependencies:
   flutter_lints: ^2.0.1
   flutter_test:
@@ -40,6 +43,7 @@ flutter:
     - .env
     - assets/fonts/Nunito_Sans/
     - assets/images/auth_tef/
+    - assets/icons/
   fonts:
     - family: Poppins
       fonts:

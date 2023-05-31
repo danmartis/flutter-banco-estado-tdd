@@ -63,6 +63,13 @@ class HomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
+              onPressed: () => context.push('/auth_tef'),
+              child: const Text('Go To Auth Tef'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ElevatedButton(
               onPressed: () => context.pushReplacement('/auth'),
               child: const Text('salir'),
             ),
