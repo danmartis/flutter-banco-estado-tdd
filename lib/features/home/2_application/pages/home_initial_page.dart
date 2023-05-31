@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/balances_summary_cards/balances_summary_list.dart';
 import '../widgets/shorcuts/shortcuts_list.dart';
@@ -14,18 +15,21 @@ class HomeInitialPage extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: Container(
         color: Colors.transparent,
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             //TODO replace with your widget and remove the example,
-            ApoloExample(padding: leftPadding),
-            BalancesSummaryList(padding: leftPadding),
-            Padding(
+            const ApoloExample(padding: leftPadding),
+            const BalancesSummaryList(padding: leftPadding),
+            const Padding(
               padding: EdgeInsets.only(left: leftPadding),
               child: Text("Accesos directos"),
             ),
-            ShortcutsList(leftPadding: leftPadding),
+            InkWell(
+              onTap: () => context.push('/auth_tef'),
+              child: const ShortcutsList(leftPadding: leftPadding)
+            ),
           ],
         ),
       ),
@@ -48,7 +52,7 @@ class ApoloExample extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: padding),
       child: Card(
-        color: Color.fromARGB(255, 144, 144, 144),
+        color: const Color.fromARGB(255, 144, 144, 144),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -75,7 +79,7 @@ class ApoloExample extends StatelessWidget {
         child: Text(
           companyName,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
@@ -84,12 +88,12 @@ class ApoloExample extends StatelessWidget {
 
   Widget _setCompanyRut(String companyRut) => Text(
         companyRut,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
         ),
       );
 
-  Widget _setChangeCompanyButton() => Row(
+  Widget _setChangeCompanyButton() => const Row(
         children: [
           Icon(
             Icons.replay_outlined,

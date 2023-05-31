@@ -36,7 +36,7 @@ class _SelectStatusAccountView extends StatelessWidget {
       appBar: CustomAppBar(title: 'Autorizar transferencias'),
       body: BlocBuilder<AuthTefCubit, AuthTefState>(
         builder: (context, authTefState) {
-          if (!authTefState.isLoading && authTefState.phaseOne.accountStates.isEmpty) {
+          if (!authTefState.isLoading && !authTefState.hasPhaseOneError && authTefState.phaseOne.accountStates.isEmpty) {
             return FadeIn(
               child: const ErrorPageContent(
                 titleError: 'No tiene transferencias sin autorización',
