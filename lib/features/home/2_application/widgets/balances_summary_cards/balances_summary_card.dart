@@ -18,7 +18,7 @@ class BalancesSummaryCard extends StatelessWidget {
     const creditLine = "\$23.456.789";
 
     return InkWell(
-      // onTap: () => context.go(BalancesPage.route),
+      onTap: () => context.push('/balances'),
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(
