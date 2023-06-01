@@ -137,7 +137,7 @@ class AccountStateButtons extends StatelessWidget {
                     'subtitleError': 'Según nuestros registros no tiene transferencias ${accountState.description.toLowerCase()}'
                   });
                 }
-
+                context.push('/auth_tef/select_origin_account');
                 // TODO: Navegar a página de listado de cuentas
               },
             )),
