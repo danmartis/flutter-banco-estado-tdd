@@ -19,7 +19,7 @@ class AuthTefFeature {
     },
     routes: [
       GoRoute(
-        path: 'select_origin_account',
+        path: 'auth_tef/select_origin_account',
         builder: (context, state) =>
             SelectOriginAccountPage(),
       ),
