@@ -12,16 +12,17 @@ import '2_application/pages/select_origin_account_page.dart';
 
 class AuthTefFeature {
     static GoRoute router = GoRoute(
-        name: 'auth_tef',
-    path: '/auth_tef',
-    builder: (BuildContext context, GoRouterState state) {
+      name: 'auth_tef',
+      path: '/auth_tef',
+      builder: (BuildContext context, GoRouterState state) {
       return const SelectStatusAccountPage();
     },
     routes: [
       GoRoute(
-        path: 'auth_tef/select_origin_account',
+        name: 'select_origin_account',
+        path: 'select_origin_account',
         builder: (context, state) =>
-            SelectOriginAccountPage(),
+            const SelectOriginAccountPage(),
       ),
     ],
   );
